@@ -1,0 +1,40 @@
+{
+  "name": "tool-detect-features",
+  "version": "0.0.1",
+  "description": "Detect the features supported by the browser, powered by Modernizr.",
+  "main": "index.js",
+  "scripts": {
+    "lib": "modernizr -c modernizr-config.json",
+    "clean": "rm -rf index.html",
+    "reset": "npm run clean && rm -rf node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://unknownmoon@github.com/unknownmoon/tool-detect-features.git"
+  },
+  "keywords": [
+    "modernizr"
+  ],
+  "author": "Unknown Moon <unknownmoon@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unknownmoon/tool-detect-features/issues"
+  },
+  "homepage": "https://github.com/unknownmoon/tool-detect-features#readme",
+  "dependencies": {
+    "modernizr": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-inline": "^0.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "utility-node-log": "github:unknownmoon/utility-node-log"
+  }
+}
