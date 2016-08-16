@@ -7,10 +7,14 @@
   var CLS_ACTIVE = PREFIX + '-active';
   var CLS_NAME = PREFIX + '-feature-card__name';
   var CLS_FEATURE_SECTION = PREFIX + '-feature-section';
+  var CLS_FEATURE_SECTION_FILTERED = CLS_FEATURE_SECTION + '--filtered';
+  var CLS_FEATURE_SECTION_ITEM_FILTERED = CLS_FEATURE_SECTION + '__item' + '--filtered';
   var CLS_FEATURE_STATICS_NOT_READY = PREFIX + '-feature-statics--not-ready';
   var CLS_FEATURE_STATICS_AVAILABLE_COUNT = PREFIX + '-feature-statics__available-count';
   var CLS_FEATURE_STATICS_UNAVAILABLE_COUNT = PREFIX + '-feature-statics__unavailable-count';
   var CLS_FEATURE_STATICS_UNDETECTABLE_COUNT = PREFIX + '-feature-statics__undetectable-count';
+  var CLS_FEATURE_FILTER = PREFIX + '-feature-filter';
+  var CLS_FEATURE_FILTER_INPUT = CLS_FEATURE_FILTER + '__input';
 
   if ( !DF ) {
     DF = window.DF = {};
@@ -107,7 +111,48 @@
       }
     } );
 
+    document.querySelector( '.' + CLS_FEATURE_FILTER_INPUT )
+      .addEventListener( 'keyup', function onFilterTyping( evt ) {
+        filterFeature( this.value );
+      } );
+
     window.addEventListener( 'load', genCards );
+  }
+
+  function filterFeature( input ) {
+    console.log( '[input]: ', input );
+    if ( input ) {
+      var dfSectionElm = document.querySelector( '.' + CLS_FEATURE_SECTION );
+
+      if ( dfSectionElm ) {
+        dfSectionElm.classList.add( CLS_FEATURE_SECTION_FILTERED );
+
+        var cards = dfSectionElm.querySelectorAll( '.' + CLS_CARD );
+        cards && cards.forEach( function ( card ) {
+          var name = card.querySelector( '.' + CLS_NAME );
+          
+          // case insensitive comparison
+          if ( name && name.innerText.toLowerCase( )
+            .indexOf( input.toLowerCase( ) ) !== -1 ) {
+            card.classList.add( CLS_FEATURE_SECTION_ITEM_FILTERED );
+          } else {
+            card.classList.remove( CLS_FEATURE_SECTION_ITEM_FILTERED );
+          }
+        } );
+      }
+    } else {
+      resetFilteredSection( );
+    }
+  }
+
+  function resetFilteredSection( ) {
+    var filteredSectionElm = document.querySelector( '.' + CLS_FEATURE_SECTION_FILTERED );
+    filteredSectionElm && filteredSectionElm.classList.remove( CLS_FEATURE_SECTION_FILTERED );
+
+    var filteredItems = document.querySelectorAll( '.' + CLS_FEATURE_SECTION_ITEM_FILTERED );
+    filteredItems && filteredItems.forEach( function ( item ) {
+      item.classList.remove( CLS_FEATURE_SECTION_ITEM_FILTERED );
+    } );
   }
 
   function isFeatureCard( elm ) {

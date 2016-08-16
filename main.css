@@ -28,6 +28,21 @@ body {
   display: block;
 }
 
+.df-feature-section--filtered .df-feature-card {
+  display: none;
+}
+
+.df-feature-section--filtered .df-feature-section__item--filtered {
+  display: inline-block;
+}
+
+.df-feature-filter__input {
+  width: 50%;
+  font-size: .9em;
+  padding: 8px;
+  margin: 1em;
+}
+
 .df-feature-card {
   display: inline-block;
   color: rgba(0, 0, 0, .86);
