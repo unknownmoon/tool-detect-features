@@ -11,9 +11,47 @@ body {
   text-align: center;
 }
 
+.df-feature-statics {
+  margin: 20px;
+}
+
 .df-feature-statics .df-feature-statics__result-table {
   display: table;
   width: 100%;
+  margin: auto;
+  max-width: 500px;
+  border-collapse: collapse;
+}
+
+.df-feature-statics__result-table caption {
+  margin: 0 0 20px;
+}
+
+.df-feature-statics__result-table th,
+.df-feature-statics__result-table td {
+  font-weight: normal;
+  padding: 5px;
+  border-left: 4px solid lightgrey;
+}
+
+.df-feature-statics__result-table th {
+  /*border-top: 1px dotted lightgrey;*/
+  border-bottom: 1px dotted lightgrey;
+}
+
+.df-feature-statics__result-table td {
+  border-top: 1px dotted lightgrey;
+  /*border-bottom: 1px dotted lightgrey;*/
+}
+
+.df-feature-statics__result-table .df-feature-statics__available-title,
+.df-feature-statics__result-table .df-feature-statics__available-count {
+  border-color: yellowgreen;
+}
+
+.df-feature-statics__result-table .df-feature-statics__unavailable-title,
+.df-feature-statics__result-table .df-feature-statics__unavailable-count {
+  border-color: lightslategrey;
 }
 
 .df-feature-statics.df-feature-statics--not-ready .df-feature-statics__result-table {
@@ -52,6 +90,8 @@ body {
   outline: none;
   cursor: pointer;
   vertical-align: top;
+  position: relative;
+  min-width: 111px;
 }
 
 @media screen and (max-width: 480px) {
@@ -62,8 +102,8 @@ body {
 }
 
 .df-feature-card__header {
-  border-left: 8px solid white;
-  border-bottom: 1px dotted white;
+  border-left: 8px solid lightgrey;
+  border-bottom: 1px dotted lightsteelblue;
   padding: 15px;
 }
 
@@ -91,6 +131,7 @@ body {
   margin: 0;
   padding: 0;
   background: rgb(130, 155, 235);
+  box-shadow: 2px 2px 8px 0 royalblue;
   color: white;
   line-height: 1.5;
   font-size: .9em;
@@ -113,6 +154,11 @@ body {
   -moz-transition: opacity, -moz-transform .2s ease-in-out;
   -webkit-transition: opacity, -webkit-transform .2s ease-in-out;
   transition: opacity, transform .2s ease-in-out;
+}
+
+.df-feature-card:focus,
+.df-feature-card.df-active {
+  z-index: 1;
 }
 
 .df-feature-card:focus .df-feature-card__description,
