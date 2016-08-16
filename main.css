@@ -11,6 +11,23 @@ body {
   text-align: center;
 }
 
+.df-feature-statics .df-feature-statics__result-table {
+  display: table;
+  width: 100%;
+}
+
+.df-feature-statics.df-feature-statics--not-ready .df-feature-statics__result-table {
+  display: none;
+}
+
+.df-feature-statics .df-feature-statics__loading {
+  display: none;
+}
+
+.df-feature-statics.df-feature-statics--not-ready .df-feature-statics__loading {
+  display: block;
+}
+
 .df-feature-card {
   display: inline-block;
   color: rgba(0, 0, 0, .86);

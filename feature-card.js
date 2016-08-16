@@ -39,8 +39,10 @@
     parsedProps.forEach( function ( prop ) {
       if ( htmlClassList.contains( prop ) ) {
         cardElm.classList.add( CLS_FEATURE_ACTIVE );
+        cardElm.classList.remove( CLS_FEATURE_INACTIVE );
       } else if ( htmlClassList.contains( NEG_PREFIX + '-' + prop ) ) {
         cardElm.classList.add( CLS_FEATURE_INACTIVE );
+        cardElm.classList.remove( CLS_FEATURE_ACTIVE );
       };
     } );
 

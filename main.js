@@ -6,6 +6,11 @@
   var CLS_CARD = PREFIX + '-feature-card';
   var CLS_ACTIVE = PREFIX + '-active';
   var CLS_NAME = PREFIX + '-feature-card__name';
+  var CLS_FEATURE_SECTION = PREFIX + '-feature-section';
+  var CLS_FEATURE_STATICS_NOT_READY = PREFIX + '-feature-statics--not-ready';
+  var CLS_FEATURE_STATICS_AVAILABLE_COUNT = PREFIX + '-feature-statics__available-count';
+  var CLS_FEATURE_STATICS_UNAVAILABLE_COUNT = PREFIX + '-feature-statics__unavailable-count';
+  var CLS_FEATURE_STATICS_UNDETECTABLE_COUNT = PREFIX + '-feature-statics__undetectable-count';
 
   if ( !DF ) {
     DF = window.DF = {};
@@ -51,8 +56,33 @@
     }
 
     if ( features.length > 0 ) {
-      document.body.appendChild( frag );
+      var featuresSectionElm = document.createElement( 'section' );
+
+      featuresSectionElm.classList.add( CLS_FEATURE_SECTION );
+      featuresSectionElm.appendChild( frag );
+      document.body.appendChild( featuresSectionElm );
+
+      updateStatics( );
     }
+  }
+
+  function updateStatics( ) {
+    var items = document.querySelectorAll( '.' + CLS_CARD );
+    var unavailableItems = document.querySelectorAll( '.' + CLS_CARD + '.' + CLS_FEATURE_INACTIVE );
+    var availableItems = document.querySelectorAll( '.' + CLS_CARD + '.' + CLS_FEATURE_ACTIVE );
+    var undetectableItems = document.querySelectorAll( '.' + CLS_CARD + ':not(.' + CLS_FEATURE_ACTIVE + ')' + ':not(.' + CLS_FEATURE_INACTIVE + ')' );
+
+    document.querySelector( '.' + CLS_FEATURE_STATICS_AVAILABLE_COUNT )
+      .innerText = availableItems.length + ' / ' + items.length;
+
+    document.querySelector( '.' + CLS_FEATURE_STATICS_UNAVAILABLE_COUNT )
+      .innerText = unavailableItems.length + ' / ' + items.length;
+
+    document.querySelector( '.' + CLS_FEATURE_STATICS_UNDETECTABLE_COUNT )
+      .innerText = undetectableItems.length + ' / ' + items.length;
+
+    document.querySelector( '.' + CLS_FEATURE_STATICS_NOT_READY )
+      .classList.remove( CLS_FEATURE_STATICS_NOT_READY );
   }
 
   function bindEventListeners( ) {
@@ -83,7 +113,7 @@
   function isFeatureCard( elm ) {
     return elm && elm.classList && elm.classList.contains( CLS_CARD ) || false;
   }
-  
+
   bindEventListeners( );
 
 }( window.DF ) );
