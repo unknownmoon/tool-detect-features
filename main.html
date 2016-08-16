@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detect Features</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <section class="df-feature-statics df-feature-statics--not-ready">
+        <p class="df-feature-statics__loading">Processing...</p>
+        <table class="df-feature-statics__result-table">
+            <thead>
+                <th>Available</th>
+                <th>Unavailable</th>
+                <th>Undetectable</th>
+            </thead>
+            <tbody>
+                <td class="df-feature-statics__available-count"></td>
+                <td class="df-feature-statics__unavailable-count"></td>
+                <td class="df-feature-statics__undetectable-count"></td>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="df-feature-filter">
+        <label class="df-feature-filter__label">
+            Feature Name: <input class="df-feature-filter__input" type="text" />
+        </label>
+    </section>
+    <script src="modernizr.js"></script>
+    <script src="feature-data.js"></script>
+    <script src="feature-card.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
